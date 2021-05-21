@@ -11,6 +11,10 @@ const data = [
           {
             id: "id",
             label: "parent"
+          },
+          {
+            id: "ad",
+            label: "ad"
           }
         ],
         id: "test2",
@@ -61,7 +65,7 @@ const DefaultStory = () => {
         onClick={onOpen}
         orderBy={{
           ids: ["label"],
-          orders: ["desc"]
+          orders: ["asc"]
         }}
       />
     </div>

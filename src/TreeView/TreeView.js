@@ -18,15 +18,18 @@ const flattenNode = ({ node, depth, result, expanded, orderBy }) => {
     collapsed
   });
 
-  if (!collapsed && children) {
+  if (children) {
     let orderedChildren = [...children];
     if (orderBy) {
       const { ids, orders } = orderBy;
       orderedChildren = orderByFunc(orderedChildren, ids, orders);
     }
-    orderedChildren.forEach(child => {
-      flattenNode({ node: child, depth: depth + 1, result, expanded });
-    });
+
+    if (!collapsed) {
+      orderedChildren.forEach(child => {
+        flattenNode({ node: child, depth: depth + 1, result, expanded, orderBy });
+      });
+    }
   }
 };
 
