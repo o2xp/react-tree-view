@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import orderByFunc from "lodash/orderBy";
 import TreeView from "../../src/TreeView";
 import "./index.css";
 
@@ -14,6 +15,10 @@ const data = [
         ],
         id: "test2",
         label: "test2"
+      },
+      {
+        id: "lol",
+        label: "lol"
       }
     ],
     id: "in",
@@ -43,9 +48,19 @@ const DefaultStory = () => {
       ? setExpanded([...expanded, node.id])
       : setExpanded(expanded.filter(id => id !== node.id));
 
+  const orderBy = arr => {
+    return orderByFunc(arr, ["label"], ["desc"]);
+  };
+
   return (
     <div style={{ height: "100%", width: "100%" }}>
-      <TreeView data={data} Row={Row} expanded={expanded} onClick={onOpen} />
+      <TreeView
+        data={data}
+        Row={Row}
+        expanded={expanded}
+        onClick={onOpen}
+        orderBy={orderBy}
+      />
     </div>
   );
 };

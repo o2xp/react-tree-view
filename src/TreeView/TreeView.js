@@ -6,9 +6,10 @@ import useDebounce from "../hooks/useDebounce";
 import ArrowIcon from "../ArrowIcon";
 import "../style/index.css";
 
-const flattenNode = ({ node, depth, result, expanded }) => {
+const flattenNode = ({ node, depth, result, expanded, orderBy }) => {
   const { id, children } = node;
   const collapsed = !expanded.includes(id);
+
   result.push({
     ...node,
     hasChildren: children && children.length > 0,
@@ -17,21 +18,29 @@ const flattenNode = ({ node, depth, result, expanded }) => {
   });
 
   if (!collapsed && children) {
-    children.forEach(child => {
+    let orderedChildren = [...children];
+    if (orderBy) {
+      orderedChildren = orderBy(children);
+    }
+    orderedChildren.forEach(child => {
       flattenNode({ node: child, depth: depth + 1, result, expanded });
     });
   }
 };
 
-const flattenOpened = memoize(({ data, expanded }) => {
+const flattenOpened = memoize(({ data, expanded, orderBy }) => {
   const result = [];
-  data.forEach(node => {
-    flattenNode({ node, depth: 1, result, expanded });
+  let orderedData = [...data];
+  if (orderBy) {
+    orderedData = orderBy(orderedData);
+  }
+  orderedData.forEach(node => {
+    flattenNode({ node, depth: 1, result, expanded, orderBy });
   });
   return result;
 });
 
-const SpeedTree = ({ data, Row: RowContent, expanded = [], onClick }) => {
+const SpeedTree = ({ data, Row: RowContent, expanded = [], onClick, orderBy }) => {
   const [flattenedData, setFlattenedData] = useState([]);
   const ref = useRef();
   const { width, height } = useDebounce({
@@ -40,7 +49,7 @@ const SpeedTree = ({ data, Row: RowContent, expanded = [], onClick }) => {
   });
 
   useEffect(() => {
-    setFlattenedData(flattenOpened({ data, expanded }));
+    setFlattenedData(flattenOpened({ data, expanded, orderBy }));
   }, [data, expanded]);
 
   const Row = memo(({ index, style }) => {
