@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@material-ui/icons": "^4.5.1",
+    "memoize-one": "^5.2.1",
     "react-window": "^1.8.6"
   },
   "devDependencies": {

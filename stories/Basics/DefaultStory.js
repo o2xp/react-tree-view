@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import TreeView from "../../src/TreeView";
 import "./index.css";
 
@@ -31,16 +31,21 @@ const data = [
   }
 ];
 
-const Row = ({ node }) => {
-  const { label } = node;
-
+const Row = ({ label }) => {
   return <div className="explorer-row">{label}</div>;
 };
 
 const DefaultStory = () => {
+  const [expanded, setExpanded] = useState([]);
+
+  const onOpen = node =>
+    node.collapsed
+      ? setExpanded([...expanded, node.id])
+      : setExpanded(expanded.filter(id => id !== node.id));
+
   return (
     <div style={{ height: "100%", width: "100%" }}>
-      <TreeView data={data} Row={Row} />
+      <TreeView data={data} Row={Row} expanded={expanded} onClick={onOpen} />
     </div>
   );
 };

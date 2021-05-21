@@ -21,8 +21,6 @@ const useWindowSize = (ref: any): { width: any, height: any } => {
     return () => window.removeEventListener("resize", handleResize);
   }, [ref]);
 
-  console.log(ref);
-
   return windowSize;
 };
 
