@@ -1,0 +1,26 @@
+.tree-view {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.tree-view .tree-view-row {
+  display: flex;
+  align-items: center;
+}
+
+.tree-view .tree-view-row:hover {
+  background-color: rgba(207, 208, 209, 1);
+  cursor: pointer;
+}
+
+.tree-view .tree-view-row .tree-view-row-content {
+  position: absolute;
+  display: flex;
+  align-items: center;
+}
+
+.invisible {
+  opacity: 0;
+}

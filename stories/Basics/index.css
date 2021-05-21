@@ -1,0 +1,9 @@
+.explorer-row {
+    display: flex;
+    align-items: center;
+    width: 100%
+}
+#root{
+    margin: 0;
+    height: 100vh;
+}
