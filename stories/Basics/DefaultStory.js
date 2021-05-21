@@ -49,7 +49,7 @@ const DefaultStory = () => {
       : setExpanded(expanded.filter(id => id !== node.id));
 
   const orderBy = arr => {
-    return orderByFunc(arr, ["label"], ["desc"]);
+    return orderByFunc(arr);
   };
 
   return (
@@ -59,7 +59,10 @@ const DefaultStory = () => {
         Row={Row}
         expanded={expanded}
         onClick={onOpen}
-        orderBy={orderBy}
+        orderBy={{
+          ids: ["label"],
+          orders: ["desc"]
+        }}
       />
     </div>
   );

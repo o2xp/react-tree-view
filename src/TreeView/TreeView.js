@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, memo } from "react";
 import { FixedSizeList as List, areEqual } from "react-window";
+import orderByFunc from "lodash/orderBy";
 import memoize from "memoize-one";
 import useWindowSize from "../hooks/useWindowSize";
 import useDebounce from "../hooks/useDebounce";
@@ -20,7 +21,8 @@ const flattenNode = ({ node, depth, result, expanded, orderBy }) => {
   if (!collapsed && children) {
     let orderedChildren = [...children];
     if (orderBy) {
-      orderedChildren = orderBy(children);
+      const { ids, orders } = orderBy;
+      orderedChildren = orderByFunc(orderedChildren, ids, orders);
     }
     orderedChildren.forEach(child => {
       flattenNode({ node: child, depth: depth + 1, result, expanded });
@@ -32,7 +34,8 @@ const flattenOpened = memoize(({ data, expanded, orderBy }) => {
   const result = [];
   let orderedData = [...data];
   if (orderBy) {
-    orderedData = orderBy(orderedData);
+    const { ids, orders } = orderBy;
+    orderedData = orderByFunc(orderedData, ids, orders);
   }
   orderedData.forEach(node => {
     flattenNode({ node, depth: 1, result, expanded, orderBy });
@@ -50,7 +53,7 @@ const SpeedTree = ({ data, Row: RowContent, expanded = [], onClick, orderBy }) =
 
   useEffect(() => {
     setFlattenedData(flattenOpened({ data, expanded, orderBy }));
-  }, [data, expanded]);
+  }, [data, expanded, orderBy]);
 
   const Row = memo(({ index, style }) => {
     const node = flattenedData[index];
