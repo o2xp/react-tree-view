@@ -11,6 +11,7 @@ const useWindowSize = (ref: any): UseWindowSizeReturn => {
   };
 
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
+
   const handleResize = () => {
     setWindowSize(getSize());
   };

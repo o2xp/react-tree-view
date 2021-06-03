@@ -54,7 +54,7 @@ const DefaultStory = () => {
   };
 
   return (
-    <div style={{ height: "100%", width: "40%" }}>
+    <div style={{ height: "100%", width: "100%" }}>
       <TreeView data={data} Row={Row} expanded={expanded} onClick={onOpen} />
     </div>
   );
