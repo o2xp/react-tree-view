@@ -1,6 +1,6 @@
 {
   "name": "@o2xp/react-tree-view",
-  "version": "0.0.1-beta.7",
+  "version": "0.0.1-beta.8",
   "description": "@o2xp/react-tree-view",
   "main": "dist/main.js",
   "keywords": [
@@ -15,18 +15,13 @@
   "author": "Morgan Dubois",
   "scripts": {
     "flow": "flow",
-    "start": "react-scripts start",
+    "start": "start-storybook -p 6006",
     "build": "rollup -c",
-    "test": "react-scripts test --coverage --watchAll=false --silent",
-    "testDev": "react-scripts test --coverage --watchAll=false",
-    "eject": "react-scripts eject",
+    "test": "react-scripts test --coverage --watchAll=false",
     "lint": "eslint ./src/**/*.{js,jsx} --fix",
-    "prettier": "prettier --write ./src/**/*.{js,jsx}",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "prettier": "prettier --write ./src/**/*.{js,jsx}"
   },
   "dependencies": {
-    "@material-ui/icons": "^4.5.1",
     "memoize-one": "^5.2.1",
     "react-window": "^1.8.6"
   },
@@ -35,17 +30,17 @@
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-flow": "^7.13.13",
     "@babel/preset-react": "^7.10.4",
-    "@dump247/storybook-state": "^1.6.1",
     "@rollup/plugin-babel": "^5.2.3",
     "@rollup/plugin-commonjs": "^17.1.0",
     "@rollup/plugin-node-resolve": "^11.1.1",
-    "@storybook/react": "^5.3.18",
+    "@storybook/react": "^6.2.9",
     "babel": "^6.23.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.0.1",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
+    "eslint": "^7.27.0",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-flowtype": "^4.3.0",
@@ -56,16 +51,13 @@
     "flow-bin": "^0.107.0",
     "husky": "^2.7.0",
     "lint-staged": "^9.2.0",
-    "postcss": "^8.2.4",
     "prettier": "^1.18.2",
     "pretty-quick": "^1.11.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "rollup": "^2.38.4",
     "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-postcss": "^4.0.0",
-    "webpack-cli": "^3.3.12",
-    "webpack-node-externals": "^2.5.2"
+    "rollup-plugin-postcss": "^4.0.0"
   },
   "peerDependencies": {
     "react": ">=16.8.0",

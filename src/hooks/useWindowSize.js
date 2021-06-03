@@ -1,7 +1,8 @@
 // @flow
 import { useState, useEffect } from "react";
+import type { UseWindowSizeReturn } from "../types";
 
-const useWindowSize = (ref: any): { width: any, height: any } => {
+const useWindowSize = (ref: any): UseWindowSizeReturn => {
   const getSize = () => {
     return {
       width: ref.current.offsetWidth,

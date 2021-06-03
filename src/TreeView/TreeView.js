@@ -1,53 +1,23 @@
-import React, { useState, useEffect, useRef, memo } from "react";
-import { FixedSizeList as List, areEqual } from "react-window";
-import orderByFunc from "lodash/orderBy";
-import memoize from "memoize-one";
+// @flow
+import React, { useState, useEffect, useRef } from "react";
+import { FixedSizeList as List } from "react-window";
 import useWindowSize from "../hooks/useWindowSize";
 import useDebounce from "../hooks/useDebounce";
-import ArrowIcon from "../ArrowIcon";
+import flattenObject from "../utils/flattenObject";
+import Row from "./Row";
 import "../style/index.css";
+import type { TreeViewProps, FlattenNode, ListItemProps } from "../types";
 
-const flattenNode = ({ node, depth, result, expanded, orderBy }) => {
-  const { id, children } = node;
-  const collapsed = !expanded.includes(id);
+const TreeView = ({
+  data,
+  Row: RowContent,
+  expanded = [],
+  onClick,
+  orderBy,
+  itemSize = 32
+}: TreeViewProps) => {
+  const [flattenedData, setFlattenedData] = useState<FlattenNode[]>([]);
 
-  result.push({
-    ...node,
-    hasChildren: children && children.length > 0,
-    depth,
-    collapsed
-  });
-
-  if (children) {
-    let orderedChildren = [...children];
-    if (orderBy) {
-      const { ids, orders } = orderBy;
-      orderedChildren = orderByFunc(orderedChildren, ids, orders);
-    }
-
-    if (!collapsed) {
-      orderedChildren.forEach(child => {
-        flattenNode({ node: child, depth: depth + 1, result, expanded, orderBy });
-      });
-    }
-  }
-};
-
-const flattenOpened = memoize(({ data, expanded, orderBy }) => {
-  const result = [];
-  let orderedData = [...data];
-  if (orderBy) {
-    const { ids, orders } = orderBy;
-    orderedData = orderByFunc(orderedData, ids, orders);
-  }
-  orderedData.forEach(node => {
-    flattenNode({ node, depth: 1, result, expanded, orderBy });
-  });
-  return result;
-});
-
-const SpeedTree = ({ data, Row: RowContent, expanded = [], onClick, orderBy }) => {
-  const [flattenedData, setFlattenedData] = useState([]);
   const ref = useRef();
   const { width, height } = useDebounce({
     value: useWindowSize(ref),
@@ -55,44 +25,30 @@ const SpeedTree = ({ data, Row: RowContent, expanded = [], onClick, orderBy }) =
   });
 
   useEffect(() => {
-    setFlattenedData(flattenOpened({ data, expanded, orderBy }));
+    setFlattenedData(flattenObject({ data, expanded, orderBy }));
   }, [data, expanded, orderBy]);
 
-  const Row = memo(({ index, style }) => {
-    const node = flattenedData[index];
-    const left = node.depth * 20;
-    const { hasChildren, label, collapsed } = node;
-    const className = `${!hasChildren && "invisible"} ${collapsed && "collapsed"}`;
-
-    return (
-      <div className="tree-view-row" style={{ ...style }} onClick={() => onClick(node)}>
-        <div
-          className="tree-view-row-content"
-          style={{
-            paddingLeft: `${left}px`,
-            width: `calc(100% - ${left}px)`
-          }}
-        >
-          <ArrowIcon className={className} />
-          {RowContent ? <RowContent {...node} /> : label}
-        </div>
-      </div>
-    );
-  }, areEqual);
-
   return (
-    <div className="tree-view" ref={ref}>
+    <div className="o2xp-tree-view" ref={ref}>
       <List
         height={height}
         itemCount={flattenedData.length}
-        itemSize={32}
+        itemSize={itemSize}
         width={width}
         itemKey={index => flattenedData[index].id}
       >
-        {Row}
+        {({ index, style }: ListItemProps) => (
+          <Row
+            index={index}
+            node={flattenedData[index]}
+            style={style}
+            RowContent={RowContent}
+            onClick={onClick}
+          />
+        )}
       </List>
     </div>
   );
 };
 
-export default SpeedTree;
+export default TreeView;

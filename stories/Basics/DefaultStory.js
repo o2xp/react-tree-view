@@ -1,5 +1,5 @@
+// @flow
 import React, { useState } from "react";
-import orderByFunc from "lodash/orderBy";
 import TreeView from "../../src/TreeView";
 import "./index.css";
 
@@ -40,34 +40,22 @@ const data = [
   }
 ];
 
-const Row = ({ label }) => {
+const Row = ({ label }: { label: string }) => {
   return <div className="explorer-row">{label}</div>;
 };
 
 const DefaultStory = () => {
   const [expanded, setExpanded] = useState([]);
 
-  const onOpen = node =>
-    node.collapsed
+  const onOpen = node => {
+    return node.collapsed
       ? setExpanded([...expanded, node.id])
       : setExpanded(expanded.filter(id => id !== node.id));
-
-  const orderBy = arr => {
-    return orderByFunc(arr);
   };
 
   return (
-    <div style={{ height: "100%", width: "100%" }}>
-      <TreeView
-        data={data}
-        Row={Row}
-        expanded={expanded}
-        onClick={onOpen}
-        orderBy={{
-          ids: ["label"],
-          orders: ["asc"]
-        }}
-      />
+    <div style={{ height: "100%", width: "40%" }}>
+      <TreeView data={data} Row={Row} expanded={expanded} onClick={onOpen} />
     </div>
   );
 };

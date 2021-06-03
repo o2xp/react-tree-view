@@ -1,9 +1,10 @@
 // @flow
 import React from "react";
+import type { ArrowIconProps } from "../types";
 
-const ArrowIcon = ({ className }) => (
+const ArrowIcon = ({ className }: ArrowIconProps) => (
   <svg
-    className={`svg-icon ${className}`}
+    className={`o2xp-svg-icon o2xp-${className}`}
     focusable="false"
     viewBox="0 0 24 24"
     aria-hidden="true"
