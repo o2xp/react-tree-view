@@ -11,6 +11,6 @@ jobs:
         with:
           node-version: 12
       - run: npm i
-      - run: npm lint
-      - run: npm flow
-      - run: npm test
+      - run: npm run lint
+      - run: npm run flow
+      - run: npm run test
