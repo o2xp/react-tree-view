@@ -1,0 +1,11 @@
+dist/
+test/
+stories/
+.storybook/
+.eslintignore
+.eslintrc
+storybook-static/
+__mocks__/
+examples/
+data/
+coverage/

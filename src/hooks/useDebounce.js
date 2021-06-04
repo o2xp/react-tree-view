@@ -1,7 +1,8 @@
 // @flow
 import { useState, useEffect } from "react";
+import type { UseDebounceProps } from "../types";
 
-const useDebounce = ({ value, delay }: { value: any, delay: number }): any => {
+const useDebounce = ({ value, delay }: UseDebounceProps) => {
   const [debouncedValue, setDebouncedValue] = useState(value);
 
   useEffect(() => {
