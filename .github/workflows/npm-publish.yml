@@ -1,9 +1,8 @@
 name: Node.js Package
 
-on: [push]
-
+on: [push, pull_request]
 jobs:
-  build:
+  run:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -11,8 +10,22 @@ jobs:
         with:
           node-version: 12
       - run: npm i
-      - run: npm run test
       - run: npm run flow
       - run: npm run lint
+      - run: npm run test
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          files: clover.xml
+          directory: ./coverage/reports/
+          flags: unittests
+          env_vars: OS,PYTHON
+          name: codecov-umbrella
+          fail_ci_if_error: true
+          path_to_write_report: ./coverage/codecov_report.txt
+          verbose: true
+   
+      
+      
       
       
