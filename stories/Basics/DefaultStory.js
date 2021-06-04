@@ -1,46 +1,25 @@
-import React from "react";
+// @flow
+import React, { useState } from "react";
 import TreeView from "../../src/TreeView";
+import data from "../../static/data";
 import "./index.css";
 
-const data = [
-  {
-    children: [
-      {
-        children: [
-          {
-            id: "id",
-            label: "parent"
-          }
-        ],
-        id: "test2",
-        label: "test2"
-      }
-    ],
-    id: "in",
-    label: "in"
-  },
-  {
-    children: [
-      {
-        id: "test",
-        label: "test"
-      }
-    ],
-    id: "out",
-    label: "out"
-  }
-];
-
-const Row = ({ node }) => {
-  const { label } = node;
-
+const Row = ({ label }: { label: string }) => {
   return <div className="explorer-row">{label}</div>;
 };
 
 const DefaultStory = () => {
+  const [expanded, setExpanded] = useState([]);
+
+  const onOpen = node => {
+    return node.collapsed
+      ? setExpanded([...expanded, node.id])
+      : setExpanded(expanded.filter(id => id !== node.id));
+  };
+
   return (
     <div style={{ height: "100%", width: "100%" }}>
-      <TreeView data={data} Row={Row} />
+      <TreeView data={data} Row={Row} expanded={expanded} onClick={onOpen} />
     </div>
   );
 };
