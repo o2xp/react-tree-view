@@ -3,7 +3,13 @@ import orderByFunc from "lodash/orderBy";
 import memoize from "memoize-one";
 import type { FlattenNodeProps, FlattenObjectProps, Node, FlattenNode } from "../types";
 
-const flattenNode = ({ node, depth, result, expanded, orderBy }: FlattenNodeProps) => {
+export const flattenNode = ({
+  node,
+  depth,
+  result,
+  expanded,
+  orderBy
+}: FlattenNodeProps) => {
   const { id, children } = node;
   const collapsed = !expanded.includes(id);
 

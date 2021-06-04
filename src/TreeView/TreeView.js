@@ -8,13 +8,16 @@ import Row from "./Row";
 import "../style/index.css";
 import type { TreeViewProps, FlattenNode, ListItemProps } from "../types";
 
+const defaultExpanded = [];
+const itemSizeDefault = 32;
+
 const TreeView = ({
   data,
   Row: RowContent,
-  expanded = [],
+  expanded = defaultExpanded,
   onClick,
   orderBy,
-  itemSize = 32
+  itemSize = itemSizeDefault
 }: TreeViewProps) => {
   const [flattenedData, setFlattenedData] = useState<FlattenNode[]>([]);
 

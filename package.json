@@ -5,7 +5,9 @@
   "main": "dist/main.js",
   "keywords": [
     "react",
-    "component"
+    "component",
+    "tree-view",
+    "virtualization"
   ],
   "license": "MIT",
   "repository": {
@@ -17,7 +19,8 @@
     "flow": "flow",
     "start": "start-storybook -p 6006",
     "build": "rollup -c",
-    "test": "jest --verbose",
+    "test": "jest --verbose --silent",
+    "testDev": "jest --verbose",
     "lint": "eslint ./src/**/*.{js,jsx} --fix",
     "prettier": "prettier --write ./src/**/*.{js,jsx}"
   },
@@ -51,6 +54,7 @@
     "flow-bin": "^0.107.0",
     "husky": "^2.7.0",
     "jest": "^27.0.3",
+    "jest-css-modules": "^2.1.0",
     "jsdom": "16.6.0",
     "jsdom-global": "3.0.2",
     "lint-staged": "^9.2.0",

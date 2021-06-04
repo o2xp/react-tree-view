@@ -28,6 +28,7 @@ const expectedResResized = {
   height: 500
 };
 
+// eslint-disable-next-line react/prop-types
 const HookWrapper = ({ fakeRef }) => {
   const value = useWindowSize(fakeRef);
   return <div res={value} />;

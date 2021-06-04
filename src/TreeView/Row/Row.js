@@ -16,7 +16,7 @@ const Row = ({ index, node, style, RowContent, onClick }: RowProps) => {
       className="o2xp-tree-view-row"
       role="button"
       tabIndex={index}
-      style={{ ...style }}
+      style={style}
       onClick={() => onClick(node)}
       onKeyPress={() => onClick(node)}
     >

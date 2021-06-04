@@ -1,44 +1,8 @@
 // @flow
 import React, { useState } from "react";
 import TreeView from "../../src/TreeView";
+import data from "../../static/data";
 import "./index.css";
-
-const data = [
-  {
-    children: [
-      {
-        children: [
-          {
-            id: "id",
-            label: "parent"
-          },
-          {
-            id: "ad",
-            label: "ad"
-          }
-        ],
-        id: "test2",
-        label: "test2"
-      },
-      {
-        id: "lol",
-        label: "lol"
-      }
-    ],
-    id: "in",
-    label: "in"
-  },
-  {
-    children: [
-      {
-        id: "test",
-        label: "test"
-      }
-    ],
-    id: "out",
-    label: "out"
-  }
-];
 
 const Row = ({ label }: { label: string }) => {
   return <div className="explorer-row">{label}</div>;

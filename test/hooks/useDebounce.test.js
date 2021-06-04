@@ -6,10 +6,11 @@ import useDebounce from "../../src/hooks/useDebounce";
 
 jest.useFakeTimers();
 
-function HookWrapper({ text }) {
+// eslint-disable-next-line react/prop-types
+const HookWrapper = ({ text }) => {
   const value = useDebounce({ value: text, delay: 1000 });
   return <div hook={value} />;
-}
+};
 
 describe("useDebounce", () => {
   it("init value", () => {
