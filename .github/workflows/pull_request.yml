@@ -15,7 +15,7 @@ jobs:
           node-version: 12
 
       - name: Install
-        run: npm i -g codecov && num i
+        run: npm i -g codecov && npm i
 
       - name: Type checking
         run: npm run flow
