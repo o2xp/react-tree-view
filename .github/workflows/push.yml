@@ -1,6 +1,6 @@
-name: Pull Request
+name: Push
 on:  
-  pull_request:
+  push:
     branches:
       - main
 jobs:
@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Node Setup
+      - name: Setup Node
         uses: actions/setup-node@v2
         with:
           node-version: 12
@@ -29,3 +29,14 @@ jobs:
 
       - name: Coverage
         run: codecov
+
+      - name: Building and Deploying to github page
+        run: npm run build-storybook && npm run deploy
+        
+      - name: Building and deploying to npm
+        run: npm run build && npm publish
+
+      
+      
+      
+      
