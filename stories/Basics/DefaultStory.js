@@ -14,7 +14,7 @@ const DefaultStory = () => {
   const onOpen = node => {
     return node.collapsed
       ? setExpanded([...expanded, node.id])
-      : setExpanded(expanded.filter(id => id !== node.id));
+      : setExpanded(expanded.filter((id: string) => id !== node.id));
   };
 
   return (
