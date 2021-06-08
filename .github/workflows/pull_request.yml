@@ -1,0 +1,35 @@
+name: Pull Request
+on:  
+  pull_request:
+    branches:
+      - main
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Node Setup
+        uses: actions/setup-node@v2
+        with:
+          node-version: 12
+
+      - name: Install
+        run: npm i -g codecov && num i
+
+      - name: Type checking
+        run: npm run flow
+
+      - name: Linter
+        run: npm run lint
+
+      - name: Testing
+        run: npm run test
+
+      - name: Coverage
+        run: codecov
+        
+      
+      
+      
+      
