@@ -30,13 +30,17 @@ jobs:
       - name: Coverage
         run: codecov
 
-      - name: Building and Deploying to github page
-        run: npm run build-storybook && npm run deploy
+      - name: Building storybook
+        run: npm run build-storybook
+
+      - name: Deploying to github page
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages 
+          folder: storybook-static
         
       - name: Building and deploying to npm
         run: npm run build && npm publish
-
-      
-      
-      
-      
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          
