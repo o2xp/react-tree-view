@@ -45,7 +45,7 @@ jobs:
         run: npm run build
       
       - name: Deploying to npm
-        run: npm publish --access public
+        run: npm publish --access public && echo ${{ secrets.NPM_TOKEN }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           
