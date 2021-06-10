@@ -40,7 +40,7 @@ jobs:
           folder: storybook-static
         
       - name: Building and deploying to npm
-        run: npm run build && npm publish
+        run: npm run build && npm publish –access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           

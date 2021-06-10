@@ -7,3 +7,6 @@
     margin: 0;
     height: 100vh;
 }
+.sb-main-padded{
+    padding: 0!important;
+} 
