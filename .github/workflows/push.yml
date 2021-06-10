@@ -14,7 +14,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 12
-          registry-url: https://registry.npmjs.org/
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install
         run: npm i -g codecov && npm i
@@ -39,9 +39,12 @@ jobs:
         with:
           branch: gh-pages 
           folder: storybook-static
-        
-      - name: Building and deploying to npm
-        run: npm run build && npm publish --access public
+      
+      - name: Building lib
+        run: npm run build
+      
+      - name: Deploying to npm
+        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           
