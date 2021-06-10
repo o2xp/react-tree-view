@@ -14,6 +14,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 12
+          registry-url: https://registry.npmjs.org/
 
       - name: Install
         run: npm i -g codecov && npm i
@@ -40,7 +41,7 @@ jobs:
           folder: storybook-static
         
       - name: Building and deploying to npm
-        run: npm run build && npm publish -–access public
+        run: npm run build && npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           
