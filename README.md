@@ -95,6 +95,7 @@ To go **further** check all [**examples**](https://github.com/o2xp/react-tree-vi
 | id | String | yes | An id that is uniq |
 | label | String | yes | Label displayed |
 | children | Array\<data> | no | And array of data type |
+| <key> | any | no | Any other data that you want in your node |
 
 #### Expanded Property Optional
 
