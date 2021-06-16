@@ -1,12 +1,42 @@
-.explorer-row {
-    display: flex;
-    align-items: center;
-    width: 100%
-}
 #root{
     margin: 0;
     height: 100vh;
 }
+
 .sb-main-padded{
     padding: 0!important;
 } 
+
+.explorer-row {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+  
+.explorer-row:hover {
+    background-color: lightgray;
+}
+  
+.size {
+    margin-left: 20px;
+    width: 200px;
+    text-align: center;
+}
+  
+.label {
+    flex-grow: 1;
+}
+  
+.rotate {
+    animation: rotateAnim 4s linear infinite;
+}
+  
+@keyframes rotateAnim {
+    from {
+      transform: roate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+}
+  

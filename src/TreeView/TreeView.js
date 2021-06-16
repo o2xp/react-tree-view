@@ -8,18 +8,38 @@ import Row from "./Row";
 import "../style/index.css";
 import type { TreeViewProps, FlattenNode, ListItemProps } from "../types";
 
-const defaultExpanded = [];
 const itemSizeDefault = 32;
 
 const TreeView = ({
   data,
   Row: RowContent,
-  expanded = defaultExpanded,
+  expanded: userExpanded,
   onClick,
   orderBy,
   itemSize = itemSizeDefault
 }: TreeViewProps) => {
   const [flattenedData, setFlattenedData] = useState<FlattenNode[]>([]);
+  const [expanded, setExpanded] = useState([]);
+
+  useEffect(() => {
+    if (userExpanded) {
+      setExpanded(userExpanded);
+    }
+  }, [userExpanded]);
+
+  const handleClick = node => {
+    if (onClick) {
+      onClick(node);
+    }
+    if (!userExpanded) {
+      const { collapsed, id } = node;
+      if (collapsed) {
+        setExpanded([...expanded, id]);
+      } else {
+        setExpanded(expanded.filter((expandedId: string) => expandedId !== id));
+      }
+    }
+  };
 
   const ref = useRef();
   const { width, height } = useDebounce({
@@ -46,7 +66,7 @@ const TreeView = ({
             node={flattenedData[index]}
             style={style}
             RowContent={RowContent}
-            onClick={onClick}
+            onClick={handleClick}
           />
         )}
       </List>

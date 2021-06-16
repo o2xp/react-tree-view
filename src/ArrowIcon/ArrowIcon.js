@@ -4,7 +4,7 @@ import type { ArrowIconProps } from "../types";
 
 const ArrowIcon = ({ className }: ArrowIconProps) => (
   <svg
-    className={`o2xp-svg-icon o2xp-${className}`}
+    className={`o2xp-svg-icon ${className}`}
     focusable="false"
     viewBox="0 0 24 24"
     aria-hidden="true"

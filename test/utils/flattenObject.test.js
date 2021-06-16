@@ -1,5 +1,5 @@
 import flattenObject, { flattenNode } from "../../src/utils/flattenObject";
-import data from "../../static/data";
+import { basicData } from "../../static/data";
 import {
   resNodeWithOrderBy,
   resNodeWithoutOrderBy,
@@ -17,7 +17,7 @@ describe("utils", () => {
     it("without order by", () => {
       const result = [];
       flattenNode({
-        node: data[0],
+        node: basicData[0],
         depth: 0,
         result,
         expanded: ["folder_1", "folder_1_2", "folder_1_1"]
@@ -29,7 +29,7 @@ describe("utils", () => {
     it("with order by", () => {
       const result = [];
       flattenNode({
-        node: data[0],
+        node: basicData[0],
         depth: 0,
         result,
         expanded: ["folder_1", "folder_1_2"],
@@ -43,7 +43,7 @@ describe("utils", () => {
   describe("flattenObject", () => {
     it("without order by", () => {
       const result = flattenObject({
-        data,
+        data: basicData,
         expanded: ["folder_1", "folder_1_2", "folder_1_1"]
       });
 
@@ -52,7 +52,7 @@ describe("utils", () => {
 
     it("with order by", () => {
       const result = flattenObject({
-        data,
+        data: basicData,
         expanded: ["folder_1", "folder_1_2"],
         orderBy
       });

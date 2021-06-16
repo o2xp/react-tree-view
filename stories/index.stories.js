@@ -1,6 +1,8 @@
 import { storiesOf } from "@storybook/react";
-import defaultStory from "./Basics/DefaultStory";
+import DefaultStory from "./Basics/DefaultStory";
+import OverideStory from "./Basics/OverideStory";
 
-const storiesBasics = storiesOf("React datatable|Basics", module);
+const storiesBasics = storiesOf("React tree view|Basics", module);
 
-storiesBasics.add("default", defaultStory);
+storiesBasics.add("Default", DefaultStory);
+storiesBasics.add("Overide", OverideStory);
