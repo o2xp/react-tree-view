@@ -4,7 +4,8 @@ import type { Node as ReactNode } from "react";
 export type Node = {
   id: string,
   label: string,
-  children?: Node[]
+  children?: Node[],
+  [key: string]: any
 };
 
 export type FlattenNode = {
@@ -22,8 +23,8 @@ export type OrderBy = {
 export type TreeViewProps = {
   data: Node[],
   Row?: Node => ReactNode,
-  expanded: string[],
-  onClick: FlattenNode => void,
+  expanded?: string[],
+  onClick?: FlattenNode => void,
   orderBy?: OrderBy,
   itemSize?: number
 };

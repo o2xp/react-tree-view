@@ -64,7 +64,7 @@ type OrderBy = {
 
 type Props = {
   orderBy: OrderBy[],
-  setOrderBy: (OrderByType[]) => void
+  setOrderBy: (OrderBy[]) => void
 };
 
 const Header = ({ orderBy, setOrderBy }: Props) => {
