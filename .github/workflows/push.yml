@@ -43,8 +43,12 @@ jobs:
       
       - name: Building lib
         run: npm run build
+
+      - id: check
+        uses: EndBug/version-check@v1
       
       - name: Deploying to npm
+        if: steps.check.outputs.changed == 'true'
         run: npm publish --access public && echo ${{ secrets.NPM_TOKEN }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
