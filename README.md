@@ -71,17 +71,9 @@ const data = [
 ];
 
 const App = () => {
-  const [expanded, setExpanded] = useState([]);
-
-  const onOpen = node => {
-    return node.collapsed
-      ? setExpanded([...expanded, node.id])
-      : setExpanded(expanded.filter((id: string) => id !== node.id));
-  };
-
   return (
-    <div style={{ height: "100%", width: "100%" }}>
-      <TreeView data={data} expanded={expanded} onClick={onOpen} />
+    <div style={{ height: "100vh", width: "100%" }}>
+      <TreeView data={data} />
     </div>
   );
 };
