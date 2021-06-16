@@ -8,7 +8,7 @@
 [![Style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![Linter: eslint (airbnb)](https://img.shields.io/badge/Linter-Eslint%20(Airbnb)-yellow)](https://github.com/airbnb/javascript)
 
-@o2xp/react-tree-view is a modulable component to build file explorer !
+@o2xp/react-tree-view is a modulable component to build tree view and more !
 
 See a show case [just here](https://o2xp.github.io/react-tree-view/).
 
