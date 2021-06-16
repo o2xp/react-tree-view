@@ -140,7 +140,7 @@ To go **further** check all [**examples**](https://github.com/o2xp/react-tree-vi
 
 
 ## Contributing
-Do you want to contribute to this project ? Great ! You can start by reading our [**contributing guide**](https://github.com/o2xp/react-tree-view/blob/develop/CONTRIBUTING.md).
+Do you want to contribute to this project ? Great ! You can start by reading our [**contributing guide**](https://github.com/o2xp/react-tree-view/blob/main/CONTRIBUTING.md).
 
 ## Build With
 * [react](https://reactjs.org/) - A JavaScript library for building user interfaces
