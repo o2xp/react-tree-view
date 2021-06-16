@@ -1,6 +1,6 @@
 {
   "name": "@o2xp/react-tree-view",
-  "version": "0.0.1-beta.10",
+  "version": "1.0.0",
   "description": "@o2xp/react-tree-view",
   "main": "dist/main.js",
   "keywords": [
@@ -35,6 +35,8 @@
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-flow": "^7.13.13",
     "@babel/preset-react": "^7.10.4",
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
     "@rollup/plugin-babel": "^5.2.3",
     "@rollup/plugin-commonjs": "^17.1.0",
     "@rollup/plugin-node-resolve": "^11.1.1",
@@ -61,6 +63,7 @@
     "jsdom": "16.6.0",
     "jsdom-global": "3.0.2",
     "lint-staged": "^9.2.0",
+    "moment-timezone": "^0.5.33",
     "prettier": "^1.18.2",
     "pretty-quick": "^1.11.1",
     "react": "^16.13.1",

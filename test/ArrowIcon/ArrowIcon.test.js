@@ -4,7 +4,7 @@ import { shallow } from "enzyme";
 import ArrowIcon from "../../src/ArrowIcon";
 
 describe("ArrowIcon", () => {
-  const wrapper = shallow(<ArrowIcon className="collapsed" />);
+  const wrapper = shallow(<ArrowIcon className="o2xp-collapsed" />);
 
   it("should shallow", () => {
     expect(wrapper.find("svg")).toHaveLength(1);
