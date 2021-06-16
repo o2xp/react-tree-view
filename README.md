@@ -81,9 +81,9 @@ const App = () => {
 export default App;
 ```
 
-[**Live implementation**](https://codesandbox.io/s/react-tree-view-basic-2h3yfp) 
+[**Live implementation**](https://codesandbox.io/s/react-tree-view-basic-2h3yf) 
 
-To go **further** check all [**examples**](https://github.com/o2xp/react-tree-view/tree/develop/examples)
+To go **further** check all [**examples**](https://github.com/o2xp/react-tree-view/tree/main/examples)
 
 ### Prop Types
 #### Data Property Required
