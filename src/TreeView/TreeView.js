@@ -1,8 +1,7 @@
 // @flow
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { FixedSizeList as List } from "react-window";
-import useWindowSize from "../hooks/useWindowSize";
-import useDebounce from "../hooks/useDebounce";
+import { useResizeDetector } from "react-resize-detector";
 import flattenObject from "../utils/flattenObject";
 import Row from "./Row";
 import "../style/index.css";
@@ -18,6 +17,7 @@ const TreeView = ({
   orderBy,
   itemSize = itemSizeDefault
 }: TreeViewProps) => {
+  const { width, height = 0, ref } = useResizeDetector();
   const [flattenedData, setFlattenedData] = useState<FlattenNode[]>([]);
   const [expanded, setExpanded] = useState([]);
 
@@ -40,12 +40,6 @@ const TreeView = ({
       }
     }
   };
-
-  const ref = useRef();
-  const { width, height } = useDebounce({
-    value: useWindowSize(ref),
-    delay: 100
-  });
 
   useEffect(() => {
     setFlattenedData(flattenObject({ data, expanded, orderBy }));

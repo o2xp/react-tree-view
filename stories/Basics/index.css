@@ -16,8 +16,9 @@
 .explorer-row:hover {
     background-color: lightgray;
 }
-  
-.size {
+
+
+.size, .lastEdit {
     margin-left: 20px;
     width: 200px;
     text-align: center;
