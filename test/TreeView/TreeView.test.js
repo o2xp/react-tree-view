@@ -15,9 +15,22 @@ const waitForComponentToPaint = async wrapper => {
   });
 };
 
+const { ResizeObserver } = window;
+
 describe("TreeView", () => {
+  beforeEach(() => {
+    delete window.ResizeObserver;
+    window.ResizeObserver = jest.fn().mockImplementation(() => ({
+      observe: jest.fn(),
+      unobserve: jest.fn(),
+      disconnect: jest.fn()
+    }));
+  });
+
   afterEach(() => {
     onClick.mockClear();
+    window.ResizeObserver = ResizeObserver;
+    jest.restoreAllMocks();
   });
 
   describe("should", () => {
